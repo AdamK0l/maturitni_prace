@@ -203,7 +203,7 @@ function solve(board = convert_to_double_array(), r = 0, c = 0) {
 }
 
 function go_to_home_page() {
-    window.location.href = "home_page.html";
+    window.location.href = "index.html";
 }
 
 function getRandomInt(max) {

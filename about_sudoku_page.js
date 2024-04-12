@@ -12,5 +12,5 @@ function change_language(){
 }
 
 function go_to_home_page() {
-    window.location.href = "home_page.html";
+    window.location.href = "index.html";
 }
