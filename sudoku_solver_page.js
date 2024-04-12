@@ -16,6 +16,7 @@ function delete_numbers(){
     const cells = document.querySelectorAll('div[contenteditable]');
     cells.forEach(cell => {
         cell.innerText = "";
+        cell.style.backgroundColor = "lightgray";
     })
 }
 
@@ -62,14 +63,12 @@ function check_if_valid(){
     
     for (let row = 0; row < 9; row++) {
         if (!isValidRow(board, row)) {
-            alert("Zadání nelze řešit");
             return false;
         }
 
     }
     for (let col = 0; col < 9; col++) {
         if (!isValidColumn(board, col)) {
-            alert("Zadání nelze řešit");
             return false;
         }
     }
@@ -77,13 +76,20 @@ function check_if_valid(){
     for (let row = 0; row < 9; row += 3) {
         for (let col = 0; col < 9; col += 3) {
             if (!isValidBox(board, row, col)) {
-                alert("Zadání nelze řešit");
                 return false;
             }
         }
     }
-    alert("Zadání je řešitelné")
     return true;
+}
+
+function check_if_valid_on_click() {
+    if (check_if_valid()) {
+        alert("Zadání je řešitelné");
+    }
+    else {
+        alert("Zadání nelze řešit");
+    }
 }
 
 function isValidRow(board, row) {
@@ -162,28 +168,180 @@ function is_valid(board, x, y, n) {
     return not_in_box && not_in_column && not_in_row;
 }
 
+n = 0
 
 function solve(board = convert_to_double_array(), r = 0, c = 0) {
+    if (!check_if_valid()) {
+        return false;
+    }
+    console.log(board = convert_to_double_array());
+    n++;
     if (r == 9) {
+        alert("Počet vygenerovaných stavů: " + n);
+        n = 0;
         return true;
     }
     else if (c == 9) {
-        return solve(board = convert_to_double_array(), r+1, c = 0);
+        return solve(board, r+1, c = 0);
     }
     else if (board[r][c] != 0) {
-        return solve(board = convert_to_double_array(), r, c+1);
+        return solve(board, r, c+1);
     }
     else {
         for (let k = 1; k < 10; k++) {
-            if (is_valid(board = convert_to_double_array(), r, c, k)){
+            if (is_valid(board, r, c, k)){
                 let editableDivs = document.querySelectorAll('div[contenteditable]');
                 editableDivs[(r*9) + c].textContent = k;
-                if (solve(board = convert_to_double_array(), r, c+1)) {
+                if (solve(board, r, c+1)) {
                     return true;
                 }
                 editableDivs[(r*9) + c].textContent = "";
             }
         }
         return false
+    }
+}
+
+function go_to_home_page() {
+    window.location.href = "home_page.html";
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function generate() {
+    for(let i = 0; i < 9;  i++) {
+        x = getRandomInt(9);
+        y = getRandomInt(9);
+        let editableDivs = document.querySelectorAll('div[contenteditable]');
+        if(is_valid(board = convert_to_double_array(), x, y, i)) {
+            editableDivs[x*9 + y].textContent = i;
+        }
+    }
+}
+
+function color_nums() {
+    if (!check_if_valid()) {
+        return false;
+    }
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    editableDivs.forEach(function(div) {
+        if(div.textContent != "") {
+            div.style.backgroundColor = "rgb(240, 93, 93)";
+        }
+    }
+    )
+}
+
+function set1() {
+    delete_numbers();
+    set = [
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+        [0, 4, 0, 4, 1, 9, 0, 0, 5],
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    ];
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (set[i][j] == 0) {
+                editableDivs[i*9 + j].textContent = "";
+            }
+            else {
+                editableDivs[i*9 + j].textContent = set[i][j];
+            }
+            
+
+        }
+    }
+}
+
+function set2() {
+    delete_numbers();
+    set = [
+        [3, 4, 0, 0, 7, 1, 2, 0, 0],
+        [0, 9, 1, 2, 0, 0, 7, 0, 0],
+        [0, 0, 6, 3, 0, 0, 0, 0, 1],
+        [4, 7, 0, 0, 0, 0, 8, 6, 5],
+        [1, 0, 0, 5, 0, 8, 3, 7, 0],
+        [0, 0, 0, 0, 6, 4, 0, 0, 0],
+        [0, 0, 3, 0, 2, 0, 6, 0, 8],
+        [0, 0, 7, 0, 1, 5, 0, 0, 0],
+        [2, 0, 4, 6, 0, 3, 9, 1, 7]
+    ];
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (set[i][j] == 0) {
+                editableDivs[i*9 + j].textContent = "";
+            }
+            else {
+                editableDivs[i*9 + j].textContent = set[i][j];
+            }
+            
+
+        }
+    }
+}
+
+function set3() {
+    delete_numbers();
+    set = [
+        [6, 0, 0, 0, 0, 0, 0, 9, 7],
+        [3, 4, 2, 7, 9, 6, 0, 0, 0],
+        [9, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 9, 0, 4, 3, 0, 0, 6, 0],
+        [0, 0, 0, 0, 8, 0, 9, 0, 0],
+        [5, 0, 3, 9, 0, 1, 7, 0, 0],
+        [2, 3, 0, 8, 5, 0, 0, 0, 0],
+        [0, 0, 0, 0, 2, 3, 5, 4, 0],
+        [0, 6, 5, 0, 0, 0, 3, 0, 0]
+    ];
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (set[i][j] == 0) {
+                editableDivs[i*9 + j].textContent = "";
+            }
+            else {
+                editableDivs[i*9 + j].textContent = set[i][j];
+            }
+            
+
+        }
+    }
+}
+
+function set4() {
+    delete_numbers();
+    set = [
+        [0, 0, 0, 9, 6, 0, 2, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 6, 0],
+        [0, 8, 0, 1, 0, 0, 0, 9, 0],
+        [0, 0, 8, 0, 0, 0, 0, 3, 2],
+        [6, 1, 9, 0, 0, 0, 0, 0, 0],
+        [0, 0, 2, 0, 0, 0, 0, 0, 4],
+        [0, 0, 0, 0, 0, 3, 5, 0, 7],
+        [1, 0, 0, 0, 0, 8, 0, 0, 0],
+        [0, 5, 0, 0, 2, 0, 0, 0, 0]
+    ];
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (set[i][j] == 0) {
+                editableDivs[i*9 + j].textContent = "";
+            }
+            else {
+                editableDivs[i*9 + j].textContent = set[i][j];
+            }
+            
+
+        }
     }
 }

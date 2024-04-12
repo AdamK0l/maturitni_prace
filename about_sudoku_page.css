@@ -105,3 +105,27 @@
     width: 500px;
     margin: auto;
 }
+
+.HP_button {
+    width: 40%;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 25px;
+    background-color: rgb(240, 93, 93);
+    cursor: pointer;
+    border-radius: 25px;
+    border: medium;
+    min-width: 250px;
+}
+
+.HP_button p{
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+}
+
+
+.HP_button:hover{
+    border: solid white 2px;
+}

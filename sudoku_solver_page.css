@@ -35,24 +35,38 @@
 
 .right_button_holder {
     padding-top: 8px;
-    padding-bottom: 8px;
     height: 70px;
-    width: 10%;
+    width: 30%;
     position: absolute;
-    right: 0px;
+    right: 30px;
     top: 0px;
-    min-width: 208px;
+    min-width: 430px;
     display: flex;
 }
 
 .lang_button {
-    width: 144px;
+    width: 20%;
     height: 50px;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     background-color: rgb(240, 93, 93);
     cursor: pointer;
     border-radius: 25px;
     border: medium;
+    min-width: 180px;
+}
+
+.HP_button {
+    width: 40%;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 25px;
+    background-color: rgb(240, 93, 93);
+    cursor: pointer;
+    border-radius: 25px;
+    border: medium;
+    min-width: 250px;
 }
 
 .lang_button:hover{
@@ -65,19 +79,33 @@
     top: 5px;
 }
 
+.HP_button p{
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+}
+
+
+.HP_button:hover{
+    border: solid white 2px;
+}
+
 .main_body {
     overflow: hidden;
     position: relative;
+    height: 90%;
     top: 90px;
 }
 
 .sudoku_solver_holder{
-    width: 1200px;
-    height: 700px;
+    min-width: 1080px;
+    min-height: 700px;
+    width: 66%;
+    height: 50%;
     position: relative;
     background-color: lightgray;
     margin: auto;
-    top: 100px;
+    margin-top: 50px;
 }
 
 .sudoku_table{
@@ -93,7 +121,7 @@
     width: 430px;
     height: 630px;
     position: relative;
-    left: 735px;
+    left: 60%;
     bottom: 595px;
 }
 
@@ -215,6 +243,7 @@
     width: 634px;
     height: 4px;
     background-color: black;
+    z-index: 100;
 }
 
 .border1{
@@ -239,4 +268,19 @@
     rotate: 90deg;
     left: 103px;
     top: 315px;
+}
+
+.set_buttons {
+    font-size: 20px;
+    border-radius: 25px;
+    height: 40px;
+    background-color: rgb(240, 93, 93);
+    border: medium;
+    width: 200px;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.set_buttons:hover{
+    border: 2px solid black;
 }

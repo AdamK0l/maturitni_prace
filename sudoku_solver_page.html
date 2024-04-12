@@ -16,6 +16,10 @@
                     <p data-lang="cs" >Jazyk</p>
                     <p data-lang="en" style="display: none;">Language</p>
                 </button>
+                <button class="HP_button" onclick="go_to_home_page()">
+                    <p data-lang="cs" >Domovská stránka</p>
+                    <p data-lang="en" style="display: none;">Home page</p>
+                </button>
             </div>
         </div>
         <div class="main_body">
@@ -127,13 +131,13 @@
                 </div>
                 <div class="sudoku_solver_buttons">
                     <div class="test_button_container">
-                        <button onclick="check_if_valid()" class="main_buttons">
+                        <button onclick="check_if_valid_on_click()" class="main_buttons">
                             <p data-lang="cs">Otestuj</p>
                             <p data-lang="en" style="display: none;">Test</p>
                         </button>
                     </div>
                     <div class="solve_button_container">
-                        <button onclick="solve()" class="main_buttons">
+                        <button onclick="color_nums(); solve()" class="main_buttons">
                             <p data-lang="cs">Řeš</p>
                             <p data-lang="en" style="display: none;">Solve</p>
                         </button>
@@ -142,6 +146,36 @@
                         <button class="main_buttons" onclick="delete_numbers()">
                             <p data-lang="cs">Smazat</p>
                             <p data-lang="en" style="display: none;">Delete</p>
+                        </button>
+                    </div>
+                    <div class="delete_button_container">
+                        <button class="main_buttons" onclick="generate()">
+                            <p data-lang="cs">Generuj</p>
+                            <p data-lang="en" style="display: none;">Generate</p>
+                        </button>
+                    </div>
+                    <div class="delete_button_container">
+                        <button class="set_buttons" onclick="set1()">
+                            <p data-lang="cs">Set 1</p>
+                            <p data-lang="en" style="display: none;">Set 1</p>
+                        </button>
+                    </div>
+                    <div class="delete_button_container">
+                        <button class="set_buttons" onclick="set2()">
+                            <p data-lang="cs">Set 2</p>
+                            <p data-lang="en" style="display: none;">Set 2</p>
+                        </button>
+                    </div>
+                    <div class="delete_button_container">
+                        <button class="set_buttons" onclick="set3()">
+                            <p data-lang="cs">Set 3</p>
+                            <p data-lang="en" style="display: none;">Set 3</p>
+                        </button>
+                    </div>
+                    <div class="delete_button_container">
+                        <button class="set_buttons" onclick="set4()">
+                            <p data-lang="cs">Set 4</p>
+                            <p data-lang="en" style="display: none;">Set 4</p>
                         </button>
                     </div>
                 </div>
