@@ -202,6 +202,34 @@ function solve(board = convert_to_double_array(), r = 0, c = 0) {
     }
 }
 
+function solve2(board = convert_to_double_array(), r = 0, c = 0) {
+    if (!check_if_valid()) {
+        return false;
+    }
+    if (r == 9) {
+        return true;
+    }
+    else if (c == 9) {
+        return solve2(board, r+1, c = 0);
+    }
+    else if (board[r][c] != 0) {
+        return solve2(board, r, c+1);
+    }
+    else {
+        for (let k = 1; k < 10; k++) {
+            if (is_valid(board, r, c, k)){
+                let editableDivs = document.querySelectorAll('div[contenteditable]');
+                editableDivs[(r*9) + c].textContent = k;
+                if (solve2(board, r, c+1)) {
+                    return true;
+                }
+                editableDivs[(r*9) + c].textContent = "";
+            }
+        }
+        return false
+    }
+}
+
 function go_to_home_page() {
     window.location.href = "index.html";
 }
@@ -219,6 +247,16 @@ function generate() {
             editableDivs[x*9 + y].textContent = i;
         }
     }
+    solve2();
+    let editableDivs = document.querySelectorAll('div[contenteditable]');
+    editableDivs.forEach(function(div) {
+        div.style.backgroundColor = "lightgray";
+        rndm = getRandomInt(4);
+        if (rndm != 0) {
+            div.textContent = "";
+        }
+    })
+
 }
 
 function color_nums() {
